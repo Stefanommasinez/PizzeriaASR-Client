@@ -1,0 +1,25 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <h5>Nome:</h5>
+      <div class="form-group">
+        <input type="text" id="nome" name="nome" [(ngModel)]="pizza.nome"/>
+      </div>
+      <h5>Impasto:</h5>
+      <div class="form-group" *ngFor="let impasto of impasti;" >
+        <input type="radio" id="impasto" name="impasto" value={{impasto.id}} />
+        <label for={{impasto.nome}}>{{impasto.nome}}</label>
+      </div>
+      <h5>ingredienti:</h5>
+      <div class="form-group" *ngFor="let ingrediente of ingredienti;" >
+        <input type="checkbox" id="ingrediente" name="ingrediente" value={{ingrediente.id}}/>
+        <label for={{ingrediente.nome}}>{{ingrediente.nome}}</label>
+      </div>
+      <button (click)="savePizza()" class="btn btn-success">Submit</button>
+    </div>
+    <div *ngIf="submitted">
+      <h4>Nuova pizza aggiunta!</h4>
+      <button class="btn btn-success" (click)="newPizza()">Add</button>
+    </div>
+  </div>
+</div>
